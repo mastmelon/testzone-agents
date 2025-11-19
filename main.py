@@ -14,5 +14,6 @@ async def main():
     multi_mcp = MultiMCP(mcp_server_configs=mcp_servers_config_dict)
     await multi_mcp.initialize()
 
+
 if __name__ == "__main__":
     asyncio.run(main())

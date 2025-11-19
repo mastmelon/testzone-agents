@@ -1,5 +1,6 @@
 import os
 import sys
+import traceback
 from typing import List, Dict, Any
 from mcp import StdioServerParameters, stdio_client, ClientSession
 
@@ -15,9 +16,9 @@ class MultiMCP:
         for server_config in self.mcp_server_configs:
             try:
                 studio_server_params = StdioServerParameters(
-                    command = sys.executable,
-                    args = [server_config['script']],
-                    cwd = server_config.get('cwd', os.getcwd())
+                    command=sys.executable,
+                    args=[server_config['script']],
+                    cwd=server_config.get('cwd', os.getcwd())
                 )
 
                 print(f"Scanning tools for {server_config['script']} in {server_config['cwd']}")
@@ -30,8 +31,10 @@ class MultiMCP:
                             print("MCP session initialized")
 
                             tools = await session.list_tools()
-                            print(f"Tools received: {[tool for tool in tools]}")
+                            print(f"\n→ Tools received: {[tool.name for tool in tools.tools]}")
                     except Exception as ex:
                         print(f"Session creation failed: {ex}")
+                        traceback.print_exc()
             except Exception as e:
                 print(f"Error initializing MCP server: {server_config['script']}: {e}")
+                traceback.print_exc()
