@@ -32,6 +32,17 @@ class MultiMCP:
 
                             tools = await session.list_tools()
                             print(f"\n→ Tools received: {[tool.name for tool in tools.tools]}")
+
+                            for tool in tools.tools:
+                                self.tool_map[tool.name] = {
+                                    "config": server_config,
+                                    "tool": tool
+                                }
+                                server_key = server_config["id"]
+
+                                if server_key not in self.server_tools:
+                                    self.server_tools[server_key] = []
+                                self.server_tools[server_key].append(tool)
                     except Exception as ex:
                         print(f"Session creation failed: {ex}")
                         traceback.print_exc()

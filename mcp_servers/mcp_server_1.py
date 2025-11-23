@@ -12,10 +12,15 @@ def add(input: AddInput) -> AddOutput:
     return AddOutput(result=input.a + input.b)
 
 
+def mcp_log(level: str, filename: str, message: str) -> None:
+    sys.stderr.write(f"{level}: {filename}: {message}\n")
+    sys.stderr.flush()
+
+
 if __name__ == '__main__':
-    print("Starting mcp_server_1 server...")
+    mcp_log("INFO", "mcp_server_1.py", "Starting mcp_server_1 server...")
     if len(sys.argv) > 1 and sys.argv[1] == "dev":
         mcp.run()
     else:
         mcp.run(transport="stdio")
-        print("Shutting down mcp_server_1 server")
+        mcp_log("INFO", "mcp_server_1.py", "Shutting down mcp_server_1 server")
