@@ -9,11 +9,11 @@ mcp_servers:
     cwd: /Users/charusharma/Documents/codebase/mys10/mcp_servers
     description: "Load, search and extract within webpages, local PDFs or other documents. Web and document specialist"
     capabilities: ["search_stored_documents_rag", "convert_webpage_url_into_markdown", "extract_pdf"]
-#  - id: websearch
-#    script: mcp_server_3.py
-#    cwd: /Users/charusharma/Documents/codebase/mys10/mcp_servers
-#    description: "Webtools to search internet for queries and fetch content for a specific web page"
-#    capabilities: ["duckduckgo_search_results", "download_raw_html_from_url"]
+  - id: websearch
+    script: mcp_server_3.py
+    cwd: /Users/charusharma/Documents/codebase/mys10/mcp_servers
+    description: "Webtools to search internet for queries and fetch content for a specific web page"
+    capabilities: ["duckduckgo_search_results", "download_raw_html_from_url"]
 #  - id: mixed
 #    script: mcp_server_4.py
 #    cwd: /Users/charusharma/Documents/codebase/mys10/mcp_servers

@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 from mcp.server import FastMCP
 from mcp.server.fastmcp import Context
 
-from mcp_servers.models import SearchInput, PythonCodeOutput, UrlInput
+from models import SearchInput, PythonCodeOutput, UrlInput
 
 
 @dataclass
