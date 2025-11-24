@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class AddInput(BaseModel):
@@ -16,3 +16,13 @@ class FilePathInput(BaseModel):
 
 class MarkdownOutput(BaseModel):
     markdown: str
+
+class SearchInput(BaseModel):
+    query: str
+    max_results: int = Field(default=10, description="Maximum number of results to return")
+
+class PythonCodeOutput(BaseModel):
+    result: str
+
+class UrlInput(BaseModel):
+    url: str

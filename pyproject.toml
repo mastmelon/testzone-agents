@@ -12,5 +12,6 @@ dependencies = [
     "pymupdf4llm>=0.0.21",
     "pyyaml>=6.0.3",
     "requests>=2.32.3",
-    "tqdm>=4.67.1"
+    "tqdm>=4.67.1",
+    "bs4>=0.0.2",
 ]
