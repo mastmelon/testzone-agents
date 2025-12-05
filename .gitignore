@@ -24,6 +24,7 @@ htmlcov/
 .tox/
 .hypothesis/
 *.log
+memory/session_logs/
 
 # IDE
 .vscode/

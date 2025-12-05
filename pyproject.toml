@@ -19,5 +19,6 @@ dependencies = [
     "dotenv>=0.9.9",
     "httpx>=0.28.1",
     "llama-index>=0.12.31",
-    "llama-index-embeddings-google-genai>=0.1.0"
+    "llama-index-embeddings-google-genai>=0.1.0",
+    "rapidfuzz>=3.13.0"
 ]

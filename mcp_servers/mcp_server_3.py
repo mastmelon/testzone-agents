@@ -227,10 +227,15 @@ async def download_raw_html_from_url(input: UrlInput, ctx: Context) -> PythonCod
     return PythonCodeOutput(result=await fetcher.fetch_and_parse(input.url, ctx))
 
 
+def mcp_log(level: str, filename: str, message: str) -> None:
+    sys.stderr.write(f"{level}: {filename}: {message}\n")
+    sys.stderr.flush()
+
+
 if __name__ == "__main__":
     print("mcp_server_3.py starting...")
     if len(sys.argv) > 1 and sys.argv[1] == "dev":
         mcp.run()  # Run without transport for dev server
     else:
         mcp.run(transport="stdio")  # Run with stdio for direct execution
-        print("\nShutting down...")
+        mcp_log("INFO", "mcp_server_3.py", "Shutting down mcp_server_3 server")

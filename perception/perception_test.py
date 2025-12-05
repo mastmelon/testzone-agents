@@ -1,3 +1,5 @@
+import json
+
 from perception import Perception
 
 
@@ -15,7 +17,7 @@ def test_perception():
             "schema_version": 1
         }
     )
-    print(result)
+    print(json.dumps(result, indent=2))
 
 
 test_perception()

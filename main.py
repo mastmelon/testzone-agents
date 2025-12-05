@@ -4,6 +4,7 @@ import signal
 import os
 import yaml
 
+from agent.agent_loop2 import AgentLoop
 from mcp_servers.multiMCP import MultiMCP
 
 
@@ -26,13 +27,21 @@ async def main():
     multi_mcp = MultiMCP(mcp_server_configs=mcp_servers_config_dict)
     await multi_mcp.initialize()
 
+    loop = AgentLoop(
+        perception_prompt_path="prompts/perception_prompt.txt",
+        decision_prompt_path="prompts/decision_prompt.txt",
+        multi_mcp=multi_mcp,
+        strategy="exploratory"
+    )
+
     while True:
         query = input("🟢  You: ").strip()
         if query.lower() in {"exit", "quit"}:
             print("👋  Goodbye!")
             break
 
-        # TODO - Do something with query here
+        response = await loop.run(query)
+        print(f"🔵 Agent: {response.state['solution_summary']}\n")
 
         follow = input("\n\nContinue? (press Enter) or type 'exit': ").strip()
         if follow.lower() in {"exit", "quit"}:
